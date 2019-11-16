@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmFacultad
     Public conexion As New SqlConnection("data source=DESKTOP-B2NQHEC;initial catalog=bibliografia;uid=sa;pwd=juncris")
-
+    'frmFacultad
     Dim dvFacultad As New DataView
     Dim vNuevo As Boolean = True
     Private Sub LimpiarFormulario()
