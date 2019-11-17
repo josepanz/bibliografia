@@ -253,9 +253,9 @@ Partial Class libro
         Me.lblChapa.Location = New System.Drawing.Point(15, 49)
         Me.lblChapa.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblChapa.Name = "lblChapa"
-        Me.lblChapa.Size = New System.Drawing.Size(55, 17)
+        Me.lblChapa.Size = New System.Drawing.Size(40, 17)
         Me.lblChapa.TabIndex = 7
-        Me.lblChapa.Text = "Materia"
+        Me.lblChapa.Text = "Libro"
         '
         'dgvConsulta
         '

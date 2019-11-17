@@ -165,9 +165,9 @@ Partial Class editorial
         Me.Label2.Location = New System.Drawing.Point(153, 25)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(125, 17)
+        Me.Label2.Size = New System.Drawing.Size(138, 17)
         Me.Label2.TabIndex = 7
-        Me.Label2.Text = "Consulta de Autor "
+        Me.Label2.Text = "Consulta de Editorial"
         '
         'btnBuscar
         '
@@ -194,9 +194,9 @@ Partial Class editorial
         Me.lblMateria.Location = New System.Drawing.Point(12, 48)
         Me.lblMateria.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMateria.Name = "lblMateria"
-        Me.lblMateria.Size = New System.Drawing.Size(42, 17)
+        Me.lblMateria.Size = New System.Drawing.Size(59, 17)
         Me.lblMateria.TabIndex = 4
-        Me.lblMateria.Text = "Autor"
+        Me.lblMateria.Text = "Editorial"
         '
         'dgvConsulta
         '

@@ -72,7 +72,9 @@ Public Class frmMateria
     End Sub
     Private Sub tbcPrincipal_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tbcPrincipal.SelectedIndexChanged
         If tbcPrincipal.SelectedIndex = 1 Then
-            dvMateria = generar_datatabla("select m.id as Id, m.codigo_materia as Codigo, m.descripcion_materia as Materia, f.nombre_facultad as Facultad  from materia m join facultad f on f.id = m.facultad_id").DefaultView
+            dvMateria = generar_datatabla("select m.id as Id, m.codigo_materia as Codigo, 
+            m.descripcion_materia as Materia, f.nombre_facultad as Facultad  
+            from materia m join facultad f on f.id = m.facultad_id").DefaultView
             dgvConsulta.DataSource = dvMateria
         End If
     End Sub

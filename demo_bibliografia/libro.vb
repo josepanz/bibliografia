@@ -110,7 +110,11 @@ Public Class libro
 
     Private Sub tbcPrincipal_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tbcPrincipal.SelectedIndexChanged
         If tbcPrincipal.SelectedIndex = 1 Then
-            dv = generar_datatabla("SELECT * FROM libro").DefaultView
+            dv = generar_datatabla("SELECT l.id as Id,l.isbn as Isbn,l.titulo as Titulo
+            ,e.descripcion as Edicion,ed.nombre_editorial as Editorial, autor.nombre_autor as Autor,ano_publicacion as AnhoPublicacion
+             from libro l join edicion e on e.id=l.edicion_id 
+             join editorial ed on ed.id=l.editorial_id
+             join autor autor on autor.id=l.autor_id").DefaultView
             dgvConsulta.DataSource = dv
         End If
     End Sub
