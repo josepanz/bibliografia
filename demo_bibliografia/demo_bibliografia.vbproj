@@ -116,6 +116,12 @@
       <DependentUpon>facultad.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="libro.Designer.vb">
+      <DependentUpon>libro.vb</DependentUpon>
+    </Compile>
+    <Compile Include="libro.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="materia.Designer.vb">
       <DependentUpon>materia.vb</DependentUpon>
     </Compile>
@@ -156,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="facultad.resx">
       <DependentUpon>facultad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="libro.resx">
+      <DependentUpon>libro.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="materia.resx">
       <DependentUpon>materia.vb</DependentUpon>
