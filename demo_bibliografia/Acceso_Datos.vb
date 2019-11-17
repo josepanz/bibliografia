@@ -6,7 +6,7 @@ Module acceso_datos
         Try
             Dim cmd As New SqlCommand(comando_sql, conexion)
             Dim adaptador As New SqlDataAdapter(cmd)
-            adaptador.Fill(tabla)
+            adaptador.Fill(tabla) 'h'
             Return tabla
         Catch ex As Exception
             MsgBox(ex.Message)
