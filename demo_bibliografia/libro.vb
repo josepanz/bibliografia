@@ -141,5 +141,5 @@ Public Class libro
         If txtMateriaBuscar.Text.Trim <> "" Then
             dv.RowFilter = "Titulo like '%" & txtMateriaBuscar.Text.Trim & "%'"
         End If
-    End Sub
+    End Sub '..'
 End Class
