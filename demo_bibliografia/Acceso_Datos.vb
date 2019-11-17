@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Module acceso_datos
-    Public conexion As New SqlConnection("data source=DESKTOP-B2NQHEC;initial catalog=bibliografia;uid=sa;pwd=juncris")
+    Public conexion As New SqlConnection("data source=OZUNA;initial catalog=bibliografia;uid=sa;pwd=asdasdx2")
     Public Function generar_datatabla(comando_sql As String) As DataTable
         Dim tabla As New DataTable
         Try
