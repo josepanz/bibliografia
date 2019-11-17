@@ -13,6 +13,7 @@
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,7 +26,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -91,6 +91,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Acceso_Datos.vb" />
+    <Compile Include="autor.Designer.vb">
+      <DependentUpon>autor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="autor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="facultad.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="autor.resx">
+      <DependentUpon>autor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="facultad.resx">
       <DependentUpon>facultad.vb</DependentUpon>
     </EmbeddedResource>
