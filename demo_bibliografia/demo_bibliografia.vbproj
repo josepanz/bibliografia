@@ -97,6 +97,12 @@
     <Compile Include="autor.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="edicion.Designer.vb">
+      <DependentUpon>edicion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="edicion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="editorial.Designer.vb">
       <DependentUpon>editorial.vb</DependentUpon>
     </Compile>
@@ -141,6 +147,9 @@
   <ItemGroup>
     <EmbeddedResource Include="autor.resx">
       <DependentUpon>autor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="edicion.resx">
+      <DependentUpon>edicion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="editorial.resx">
       <DependentUpon>editorial.vb</DependentUpon>
