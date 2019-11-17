@@ -139,7 +139,7 @@ Public Class libro
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         dv.RowFilter = ""
         If txtMateriaBuscar.Text.Trim <> "" Then
-            dv.RowFilter = "Libro like '%" & txtMateriaBuscar.Text.Trim & "%'"
+            dv.RowFilter = "Titulo like '%" & txtMateriaBuscar.Text.Trim & "%'"
         End If
     End Sub
 End Class
