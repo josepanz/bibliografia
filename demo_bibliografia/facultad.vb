@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmFacultad
-    Public conexion As New SqlConnection("data source=OZUNA;initial catalog=bibliografia;uid=sa;pwd=asdasdx2")
+    'Public conexion As New SqlConnection("data source=OZUNA;initial catalog=bibliografia;uid=sa;pwd=asdasdx2")
+    Public conexion As New SqlConnection("data source=JPANZA\SQLSERVER;initial catalog=bibliografia;Integrated Security=True")
     'frmFacultad
     Dim dvFacultad As New DataView
     Dim vNuevo As Boolean = True
