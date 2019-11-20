@@ -35,13 +35,10 @@ Public Class autor
             Dim vComando As New SqlCommand
             vComando.Connection = conexion
             If vNuevo = False Then
-                vComando.CommandText = ("update autor set nombre_autor='" & txtAutor.Text & "' where id=" & nudAutorID.Value)
+                EjecutarSQL("update autor set nombre_autor=@1 where id=@2", txtAutor.Text, nudAutorID.Value)
             Else
-                vComando.CommandText = "insert into autor values('" + txtAutor.Text.Trim + "')"
+                EjecutarSQL("insert into autor values(@1)", txtAutor.Text.Trim)
             End If
-            conexion.Open()
-            vComando.ExecuteNonQuery()
-            conexion.Close()
             MessageBox.Show("Registro guardado con éxito")
             LimpiarFormulario()
         End If
