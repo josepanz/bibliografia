@@ -59,6 +59,9 @@ Module acceso_datos
     End Sub
     Public Function IniciarTransaccion() As SqlTransaction
         Try
+            If conexion.State = ConnectionState.Closed Then
+                conexion.Open()
+            End If
             Return conexion.BeginTransaction
         Catch ex As Exception
             MsgBox(ex.Message)
