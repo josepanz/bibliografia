@@ -1,7 +1,5 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmFacultad
-    'Public conexion As New SqlConnection("data source=OZUNA;initial catalog=bibliografia;uid=sa;pwd=asdasdx2")
-    Public conexion As New SqlConnection("data source=JPANZA\SQLSERVER;initial catalog=bibliografia;Integrated Security=True")
     'frmFacultad
     Dim dvFacultad As New DataView
     Dim vNuevo As Boolean = True
@@ -28,10 +26,7 @@ Public Class frmFacultad
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         If vNuevo = False Then
             If MessageBox.Show("¿Está seguro de eliminar el Registro?", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                Dim vComando As New SqlCommand("delete from facultad WHERE id = " & nudFacultadID.Value, conexion)
-                conexion.Open()
-                vComando.ExecuteNonQuery()
-                conexion.Close()
+                EjecutarSQL("delete from facultad WHERE id =@1", nudFacultadID.Value)
                 MessageBox.Show("Registro eliminado con éxito")
                 LimpiarFormulario()
             End If
@@ -43,13 +38,10 @@ Public Class frmFacultad
             Dim vComando As New SqlCommand
             vComando.Connection = conexion
             If vNuevo = False Then
-                vComando.CommandText = ("update facultad set nombre_facultad='" & txtFacultad.Text & "',codigo_facultad='" & txtCodeFacultad.Text & "' where id=" & nudFacultadID.Value)
+                EjecutarSQL("update facultad set nombre_facultad=@1,codigo_facultad=@2 where id=@3", txtFacultad.Text.Trim, txtCodeFacultad.Text.Trim, nudFacultadID.Value)
             Else
-                vComando.CommandText = "insert into facultad values('" + txtFacultad.Text.Trim + "','" + txtCodeFacultad.Text.Trim + "')"
+                EjecutarSQL("insert into facultad values(@1,@2)", txtFacultad.Text.Trim, txtCodeFacultad.Text.Trim)
             End If
-            conexion.Open()
-            vComando.ExecuteNonQuery()
-            conexion.Close()
             MessageBox.Show("Registro guardado con éxito")
             LimpiarFormulario()
         End If

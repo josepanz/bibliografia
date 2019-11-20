@@ -1,7 +1,5 @@
 ﻿Imports System.Data.SqlClient
 Public Class autor
-    'Public conexion As New SqlConnection("data source=OZUNA;initial catalog=bibliografia;uid=sa;pwd=asdasdx2")
-    Public conexion As New SqlConnection("data source=JPANZA\SQLSERVER;initial catalog=bibliografia;Integrated Security=True")
     Dim dv As New DataView
     Dim vNuevo As Boolean = True
     Private Sub LimpiarFormulario()
@@ -21,10 +19,7 @@ Public Class autor
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         If vNuevo = False Then
             If MessageBox.Show("¿Está seguro de eliminar el Registro?", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                Dim vComando As New SqlCommand("delete from autor WHERE id = " & nudAutorID.Value, conexion)
-                conexion.Open()
-                vComando.ExecuteNonQuery()
-                conexion.Close()
+                EjecutarSQL("delete from autor WHERE id = @1", nudAutorID.Value)
                 MessageBox.Show("Registro eliminado con éxito")
                 LimpiarFormulario()
             End If
@@ -36,7 +31,7 @@ Public Class autor
             Dim vComando As New SqlCommand
             vComando.Connection = conexion
             If vNuevo = False Then
-                EjecutarSQL("update autor set nombre_autor=@1 where id=@2", txtAutor.Text, nudAutorID.Value)
+                EjecutarSQL("update autor Set nombre_autor=@1 where id=@2", txtAutor.Text, nudAutorID.Value)
             Else
                 EjecutarSQL("insert into autor values(@1)", txtAutor.Text.Trim)
             End If
@@ -53,7 +48,7 @@ Public Class autor
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         dv.RowFilter = ""
         If txtBuscar.Text.Trim <> "" Then
-            dv.RowFilter = "Nombre like '%" & txtBuscar.Text.Trim & "%'"
+            dv.RowFilter = "Nombre Like '%" & txtBuscar.Text.Trim & "%'"
         End If
     End Sub
 

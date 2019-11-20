@@ -1,7 +1,5 @@
 ﻿Imports System.Data.SqlClient
 Public Class edicion
-    'Public conexion As New SqlConnection("data source=OZUNA;initial catalog=bibliografia;uid=sa;pwd=asdasdx2")
-    Public conexion As New SqlConnection("data source=JPANZA\SQLSERVER;initial catalog=bibliografia;Integrated Security=True")
     Dim dv As New DataView
     Dim vNuevo As Boolean = True
     Private Sub LimpiarFormulario()
@@ -21,10 +19,7 @@ Public Class edicion
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         If vNuevo = False Then
             If MessageBox.Show("¿Está seguro de eliminar el Registro?", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                Dim vComando As New SqlCommand("delete from edicion WHERE id = " & nudEdicionID.Value, conexion)
-                conexion.Open()
-                vComando.ExecuteNonQuery()
-                conexion.Close()
+                EjecutarSQL("delete from edicion WHERE id =@1 ", nudEdicionID.Value)
                 MessageBox.Show("Registro eliminado con éxito")
                 LimpiarFormulario()
             End If
@@ -36,13 +31,10 @@ Public Class edicion
             Dim vComando As New SqlCommand
             vComando.Connection = conexion
             If vNuevo = False Then
-                vComando.CommandText = ("update edicion set descripcion='" & txtEdicion.Text & "' where id=" & nudEdicionID.Value)
+                EjecutarSQL("update edicion set descripcion=@1 where id=@2", txtEdicion.Text.Trim, nudEdicionID.Value)
             Else
-                vComando.CommandText = "insert into edicion values('" + txtEdicion.Text.Trim + "')"
+                EjecutarSQL("insert into edicion values(@1)", txtEdicion.Text.Trim)
             End If
-            conexion.Open()
-            vComando.ExecuteNonQuery()
-            conexion.Close()
             MessageBox.Show("Registro guardado con éxito")
             LimpiarFormulario()
         End If
@@ -57,7 +49,7 @@ Public Class edicion
         dv.RowFilter = ""
         If txtBuscar.Text.Trim <> "" Then
             dv.RowFilter = "Descripcion like '%" & txtBuscar.Text.Trim & "%'"
-        End If
+            End If
     End Sub
 
     Private Sub tbcPrincipal_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tbcPrincipal.SelectedIndexChanged

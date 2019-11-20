@@ -24,7 +24,7 @@ Partial Class promocion
     Private Sub InitializeComponent()
         Me.tbcPrincipal = New System.Windows.Forms.TabControl()
         Me.tbpMantenimiento = New System.Windows.Forms.TabPage()
-        Me.nudEdicionID = New System.Windows.Forms.NumericUpDown()
+        Me.nudPromocionID = New System.Windows.Forms.NumericUpDown()
         Me.lblMaterialID = New System.Windows.Forms.Label()
         Me.txtPromo = New System.Windows.Forms.TextBox()
         Me.btnSalir = New System.Windows.Forms.Button()
@@ -37,11 +37,17 @@ Partial Class promocion
         Me.txtBuscar = New System.Windows.Forms.TextBox()
         Me.lblMateria = New System.Windows.Forms.Label()
         Me.dgvConsulta = New System.Windows.Forms.DataGridView()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.nudAnho = New System.Windows.Forms.NumericUpDown()
+        Me.nudNroPromo = New System.Windows.Forms.NumericUpDown()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.tbcPrincipal.SuspendLayout()
         Me.tbpMantenimiento.SuspendLayout()
-        CType(Me.nudEdicionID, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nudPromocionID, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tbpConsulta.SuspendLayout()
         CType(Me.dgvConsulta, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nudAnho, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nudNroPromo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbcPrincipal
@@ -58,7 +64,11 @@ Partial Class promocion
         '
         'tbpMantenimiento
         '
-        Me.tbpMantenimiento.Controls.Add(Me.nudEdicionID)
+        Me.tbpMantenimiento.Controls.Add(Me.nudNroPromo)
+        Me.tbpMantenimiento.Controls.Add(Me.Label3)
+        Me.tbpMantenimiento.Controls.Add(Me.nudAnho)
+        Me.tbpMantenimiento.Controls.Add(Me.Label1)
+        Me.tbpMantenimiento.Controls.Add(Me.nudPromocionID)
         Me.tbpMantenimiento.Controls.Add(Me.lblMaterialID)
         Me.tbpMantenimiento.Controls.Add(Me.txtPromo)
         Me.tbpMantenimiento.Controls.Add(Me.btnSalir)
@@ -74,15 +84,15 @@ Partial Class promocion
         Me.tbpMantenimiento.Text = "Mantenimiento"
         Me.tbpMantenimiento.UseVisualStyleBackColor = True
         '
-        'nudEdicionID
+        'nudPromocionID
         '
-        Me.nudEdicionID.Location = New System.Drawing.Point(131, 7)
-        Me.nudEdicionID.Margin = New System.Windows.Forms.Padding(4)
-        Me.nudEdicionID.Maximum = New Decimal(New Integer() {99999, 0, 0, 0})
-        Me.nudEdicionID.Name = "nudEdicionID"
-        Me.nudEdicionID.ReadOnly = True
-        Me.nudEdicionID.Size = New System.Drawing.Size(160, 22)
-        Me.nudEdicionID.TabIndex = 9
+        Me.nudPromocionID.Location = New System.Drawing.Point(131, 7)
+        Me.nudPromocionID.Margin = New System.Windows.Forms.Padding(4)
+        Me.nudPromocionID.Maximum = New Decimal(New Integer() {99999, 0, 0, 0})
+        Me.nudPromocionID.Name = "nudPromocionID"
+        Me.nudPromocionID.ReadOnly = True
+        Me.nudPromocionID.Size = New System.Drawing.Size(160, 22)
+        Me.nudPromocionID.TabIndex = 9
         '
         'lblMaterialID
         '
@@ -96,7 +106,7 @@ Partial Class promocion
         '
         'txtPromo
         '
-        Me.txtPromo.Location = New System.Drawing.Point(131, 58)
+        Me.txtPromo.Location = New System.Drawing.Point(131, 137)
         Me.txtPromo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtPromo.MaxLength = 100
         Me.txtPromo.Name = "txtPromo"
@@ -105,7 +115,7 @@ Partial Class promocion
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(547, 241)
+        Me.btnSalir.Location = New System.Drawing.Point(552, 273)
         Me.btnSalir.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(100, 28)
@@ -115,7 +125,7 @@ Partial Class promocion
         '
         'btnEliminar
         '
-        Me.btnEliminar.Location = New System.Drawing.Point(111, 241)
+        Me.btnEliminar.Location = New System.Drawing.Point(111, 273)
         Me.btnEliminar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnEliminar.Name = "btnEliminar"
         Me.btnEliminar.Size = New System.Drawing.Size(100, 28)
@@ -125,7 +135,7 @@ Partial Class promocion
         '
         'btnAceptar
         '
-        Me.btnAceptar.Location = New System.Drawing.Point(111, 167)
+        Me.btnAceptar.Location = New System.Drawing.Point(111, 210)
         Me.btnAceptar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(100, 28)
@@ -136,12 +146,12 @@ Partial Class promocion
         'lblFacultad
         '
         Me.lblFacultad.AutoSize = True
-        Me.lblFacultad.Location = New System.Drawing.Point(12, 61)
+        Me.lblFacultad.Location = New System.Drawing.Point(12, 137)
         Me.lblFacultad.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFacultad.Name = "lblFacultad"
-        Me.lblFacultad.Size = New System.Drawing.Size(75, 17)
+        Me.lblFacultad.Size = New System.Drawing.Size(82, 17)
         Me.lblFacultad.TabIndex = 2
-        Me.lblFacultad.Text = "Promocion"
+        Me.lblFacultad.Text = "Descripcion"
         '
         'tbpConsulta
         '
@@ -210,6 +220,43 @@ Partial Class promocion
         Me.dgvConsulta.Size = New System.Drawing.Size(784, 321)
         Me.dgvConsulta.TabIndex = 1
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(12, 52)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(41, 17)
+        Me.Label1.TabIndex = 10
+        Me.Label1.Text = "Anho"
+        '
+        'nudAnho
+        '
+        Me.nudAnho.Location = New System.Drawing.Point(131, 47)
+        Me.nudAnho.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
+        Me.nudAnho.Name = "nudAnho"
+        Me.nudAnho.Size = New System.Drawing.Size(160, 22)
+        Me.nudAnho.TabIndex = 11
+        '
+        'nudNroPromo
+        '
+        Me.nudNroPromo.Location = New System.Drawing.Point(131, 87)
+        Me.nudNroPromo.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
+        Me.nudNroPromo.Name = "nudNroPromo"
+        Me.nudNroPromo.Size = New System.Drawing.Size(160, 22)
+        Me.nudNroPromo.TabIndex = 13
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Cursor = System.Windows.Forms.Cursors.Arrow
+        Me.Label3.Location = New System.Drawing.Point(9, 92)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(80, 17)
+        Me.Label3.TabIndex = 12
+        Me.Label3.Text = "Nro. Promo"
+        '
         'promocion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -221,17 +268,19 @@ Partial Class promocion
         Me.tbcPrincipal.ResumeLayout(False)
         Me.tbpMantenimiento.ResumeLayout(False)
         Me.tbpMantenimiento.PerformLayout()
-        CType(Me.nudEdicionID, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nudPromocionID, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tbpConsulta.ResumeLayout(False)
         Me.tbpConsulta.PerformLayout()
         CType(Me.dgvConsulta, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nudAnho, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nudNroPromo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents tbcPrincipal As TabControl
     Friend WithEvents tbpMantenimiento As TabPage
-    Friend WithEvents nudEdicionID As NumericUpDown
+    Friend WithEvents nudPromocionID As NumericUpDown
     Friend WithEvents lblMaterialID As Label
     Friend WithEvents txtPromo As TextBox
     Friend WithEvents btnSalir As Button
@@ -244,4 +293,8 @@ Partial Class promocion
     Friend WithEvents txtBuscar As TextBox
     Friend WithEvents lblMateria As Label
     Friend WithEvents dgvConsulta As DataGridView
+    Friend WithEvents nudAnho As NumericUpDown
+    Friend WithEvents Label1 As Label
+    Friend WithEvents nudNroPromo As NumericUpDown
+    Friend WithEvents Label3 As Label
 End Class

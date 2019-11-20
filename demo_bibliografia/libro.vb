@@ -1,7 +1,5 @@
 ﻿Imports System.Data.SqlClient
 Public Class libro
-    'Public conexion As New SqlConnection("data source=OZUNA;initial catalog=bibliografia;uid=sa;pwd=asdasdx2")
-    Public conexion As New SqlConnection("data source=JPANZA\SQLSERVER;initial catalog=bibliografia;Integrated Security=True")
     Dim dv As New DataView
     Dim vNuevo As Boolean = True
     Private Sub LimpiarFormulario()
@@ -42,17 +40,6 @@ Public Class libro
         End If
         Return True
     End Function
-    Private Sub btnSalir_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub btnEliminar_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub btnAceptar_Click(sender As Object, e As EventArgs)
-
-    End Sub
 
     Private Sub libro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         With cboEdicion
@@ -82,10 +69,7 @@ Public Class libro
     Private Sub btnEliminar_Click_1(sender As Object, e As EventArgs) Handles btnEliminar.Click
         If vNuevo = False Then
             If MessageBox.Show("¿Está seguro de eliminar el Registro?", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                Dim vComando As New SqlCommand("delete from libro WHERE id = " & nudLibroID.Value, conexion)
-                conexion.Open()
-                vComando.ExecuteNonQuery()
-                conexion.Close()
+                EjecutarSQL("delete from libro WHERE id =@1 ", nudLibroID.Value)
                 MessageBox.Show("Registro eliminado con éxito")
                 LimpiarFormulario()
             End If
@@ -94,16 +78,11 @@ Public Class libro
 
     Private Sub btnAceptar_Click_1(sender As Object, e As EventArgs) Handles btnAceptar.Click
         If DatosValidos() = True Then
-            Dim vComando As New SqlCommand
-            vComando.Connection = conexion
             If vNuevo = False Then
-                vComando.CommandText = "update libro set isbn='" & txtIbsn.Text & "',titulo='" & txtTitulo.Text & "',edicion_id=" & cboEdicion.SelectedValue & ",editorial_id=" & cboEditorial.SelectedValue & ",autor_id=" & cboAutor.SelectedValue & ",ano_publicacion=" & nudAnho.Value & " where id = " & nudLibroID.Value
+                EjecutarSQL("update libro set isbn=@1,titulo=@2,edicion_id=@3, editorial_id =@4, autor_id =@5, ano_publicacion =@6  where id = @7", txtIbsn.Text, txtTitulo.Text, cboEdicion.SelectedValue, cboEditorial.SelectedValue, cboAutor.SelectedValue, nudAnho.Value, nudLibroID.Value)
             Else
-                vComando.CommandText = "insert into libro values('" & txtIbsn.Text & "','" & txtTitulo.Text & "'," & cboEdicion.SelectedValue & "," & cboEditorial.SelectedValue & "," & cboAutor.SelectedValue & "," & nudAnho.Value & ")"
+                EjecutarSQL("insert into libro values(@1,@2,@3,@4,@5,@6)", txtIbsn.Text, txtTitulo.Text, cboEdicion.SelectedValue, cboEditorial.SelectedValue, cboAutor.SelectedValue, nudAnho.Value)
             End If
-            conexion.Open()
-            vComando.ExecuteNonQuery()
-            conexion.Close()
             MessageBox.Show("Registro guardado con éxito")
             LimpiarFormulario()
         End If
@@ -142,5 +121,5 @@ Public Class libro
         If txtMateriaBuscar.Text.Trim <> "" Then
             dv.RowFilter = "Titulo like '%" & txtMateriaBuscar.Text.Trim & "%'"
         End If
-    End Sub '..'
+    End Sub
 End Class

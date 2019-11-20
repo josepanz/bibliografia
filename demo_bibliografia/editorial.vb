@@ -1,7 +1,5 @@
 ﻿Imports System.Data.SqlClient
 Public Class editorial
-    'Public conexion As New SqlConnection("data source=OZUNA;initial catalog=bibliografia;uid=sa;pwd=asdasdx2")
-    Public conexion As New SqlConnection("data source=JPANZA\SQLSERVER;initial catalog=bibliografia;Integrated Security=True")
     Dim dv As New DataView
     Dim vNuevo As Boolean = True
     Private Sub LimpiarFormulario()
@@ -22,13 +20,10 @@ Public Class editorial
             Dim vComando As New SqlCommand
             vComando.Connection = conexion
             If vNuevo = False Then
-                vComando.CommandText = ("update editorial set nombre_editorial='" & txtEditorial.Text & "' where id=" & nudEditorialID.Value)
+                EjecutarSQL("update editorial set nombre_editorial=@1 where id=@2", txtEditorial.Text.Trim, nudEditorialID.Value)
             Else
-                vComando.CommandText = "insert into editorial values('" + txtEditorial.Text.Trim + "')"
+                EjecutarSQL("insert into editorial values(@1)", txtEditorial.Text.Trim)
             End If
-            conexion.Open()
-            vComando.ExecuteNonQuery()
-            conexion.Close()
             MessageBox.Show("Registro guardado con éxito")
             LimpiarFormulario()
         End If
@@ -37,10 +32,7 @@ Public Class editorial
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         If vNuevo = False Then
             If MessageBox.Show("¿Está seguro de eliminar el Registro?", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                Dim vComando As New SqlCommand("delete from editorial WHERE id = " & nudEditorialID.Value, conexion)
-                conexion.Open()
-                vComando.ExecuteNonQuery()
-                conexion.Close()
+                EjecutarSQL("delete from editorial WHERE id =@1", nudEditorialID.Value)
                 MessageBox.Show("Registro eliminado con éxito")
                 LimpiarFormulario()
             End If

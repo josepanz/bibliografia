@@ -1,7 +1,5 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmMateria
-    'Public conexion As New SqlConnection("data source=OZUNA;initial catalog=bibliografia;uid=sa;pwd=asdasdx2")
-    Public conexion As New SqlConnection("data source=JPANZA\SQLSERVER;initial catalog=bibliografia;Integrated Security=True")
     Dim dvMateria As New DataView
     Dim vNuevo As Boolean = True
     Private Sub LimpiarFormulario()
@@ -45,10 +43,7 @@ Public Class frmMateria
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         If vNuevo = False Then
             If MessageBox.Show("¿Está seguro de eliminar el Registro?", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                Dim vComando As New SqlCommand("delete from materia WHERE id = " & nudMateriaID.Value, conexion)
-                conexion.Open()
-                vComando.ExecuteNonQuery()
-                conexion.Close()
+                EjecutarSQL("delete from materia WHERE id =@1", nudMateriaID.Value)
                 MessageBox.Show("Registro eliminado con éxito")
                 LimpiarFormulario()
             End If
@@ -60,13 +55,10 @@ Public Class frmMateria
             Dim vComando As New SqlCommand
             vComando.Connection = conexion
             If vNuevo = False Then
-                vComando.CommandText = "update materia set codigo_materia='" & txtCodeMateria.Text & "',descripcion_materia='" & txtMateria.Text & "',facultad_id=" & cboFacultad.SelectedValue & " where id = " & nudMateriaID.Value
+                EjecutarSQL("update materia set codigo_materia=@1,descripcion_materia=@2,facultad_id=@3 where id =@4", txtCodeMateria.Text, txtMateria.Text, cboFacultad.SelectedValue, nudMateriaID.Value)
             Else
-                vComando.CommandText = "insert into materia values('" & txtCodeMateria.Text & "','" & txtMateria.Text & "','" & cboFacultad.SelectedValue & "')"
+                EjecutarSQL("insert into materia values(@1,@2,@3)", txtCodeMateria.Text, txtMateria.Text, cboFacultad.SelectedValue)
             End If
-            conexion.Open()
-            vComando.ExecuteNonQuery()
-            conexion.Close()
             MessageBox.Show("Registro guardado con éxito")
             LimpiarFormulario()
         End If
