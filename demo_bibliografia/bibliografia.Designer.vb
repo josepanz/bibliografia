@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class bibliografia
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class bibliografia
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(bibliografia))
         Me.nudBibliografiaID = New System.Windows.Forms.NumericUpDown()
@@ -33,7 +33,6 @@ Partial Class bibliografia
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtDescripcion = New System.Windows.Forms.TextBox()
         Me.dgvDetalle = New System.Windows.Forms.DataGridView()
-        Me.Libro = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnHabilitarDetalle = New System.Windows.Forms.Button()
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
@@ -146,22 +145,12 @@ Partial Class bibliografia
         '
         Me.dgvDetalle.AllowUserToAddRows = False
         Me.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDetalle.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Libro})
         Me.dgvDetalle.Location = New System.Drawing.Point(29, 250)
         Me.dgvDetalle.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvDetalle.Name = "dgvDetalle"
         Me.dgvDetalle.RowHeadersWidth = 51
-        Me.dgvDetalle.Size = New System.Drawing.Size(824, 185)
+        Me.dgvDetalle.Size = New System.Drawing.Size(1161, 185)
         Me.dgvDetalle.TabIndex = 30
-        '
-        'Libro
-        '
-        Me.Libro.DataPropertyName = "Libro"
-        Me.Libro.HeaderText = "Libro"
-        Me.Libro.MinimumWidth = 6
-        Me.Libro.Name = "Libro"
-        Me.Libro.ReadOnly = True
-        Me.Libro.Width = 60
         '
         'btnHabilitarDetalle
         '
@@ -262,7 +251,7 @@ Partial Class bibliografia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(883, 626)
+        Me.ClientSize = New System.Drawing.Size(1203, 626)
         Me.Controls.Add(Me.nudAnho)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.cboPromocion)
@@ -309,5 +298,4 @@ Partial Class bibliografia
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents nudAnho As NumericUpDown
-    Friend WithEvents Libro As DataGridViewTextBoxColumn
 End Class
