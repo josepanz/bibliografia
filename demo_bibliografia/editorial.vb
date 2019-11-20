@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Public Class editorial
-    Public conexion As New SqlConnection("data source=OZUNA;initial catalog=bibliografia;uid=sa;pwd=asdasdx2")
+    'Public conexion As New SqlConnection("data source=OZUNA;initial catalog=bibliografia;uid=sa;pwd=asdasdx2")
+    Public conexion As New SqlConnection("data source=JPANZA\SQLSERVER;initial catalog=bibliografia;Integrated Security=True")
     Dim dv As New DataView
     Dim vNuevo As Boolean = True
     Private Sub LimpiarFormulario()

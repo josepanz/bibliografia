@@ -27,6 +27,10 @@ Partial Class menu
         Me.tsmMateria = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmFacultad = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmLibro = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmEdicion = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmEditorial = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmAutor = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -41,7 +45,7 @@ Partial Class menu
         '
         'tsmInicio
         '
-        Me.tsmInicio.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmMateria, Me.tsmFacultad})
+        Me.tsmInicio.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmMateria, Me.tsmFacultad, Me.tsmLibro, Me.tsmAutor})
         Me.tsmInicio.Name = "tsmInicio"
         Me.tsmInicio.Size = New System.Drawing.Size(48, 20)
         Me.tsmInicio.Text = "Inicio"
@@ -63,6 +67,31 @@ Partial Class menu
         Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
         Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(41, 20)
         Me.SalirToolStripMenuItem.Text = "Salir"
+        '
+        'tsmLibro
+        '
+        Me.tsmLibro.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmEdicion, Me.tsmEditorial})
+        Me.tsmLibro.Name = "tsmLibro"
+        Me.tsmLibro.Size = New System.Drawing.Size(180, 22)
+        Me.tsmLibro.Text = "Libro"
+        '
+        'tsmEdicion
+        '
+        Me.tsmEdicion.Name = "tsmEdicion"
+        Me.tsmEdicion.Size = New System.Drawing.Size(180, 22)
+        Me.tsmEdicion.Text = "Edicion"
+        '
+        'tsmEditorial
+        '
+        Me.tsmEditorial.Name = "tsmEditorial"
+        Me.tsmEditorial.Size = New System.Drawing.Size(180, 22)
+        Me.tsmEditorial.Text = "Editorial"
+        '
+        'tsmAutor
+        '
+        Me.tsmAutor.Name = "tsmAutor"
+        Me.tsmAutor.Size = New System.Drawing.Size(180, 22)
+        Me.tsmAutor.Text = "Autor"
         '
         'menu
         '
@@ -89,4 +118,8 @@ Partial Class menu
     Friend WithEvents tsmMateria As ToolStripMenuItem
     Friend WithEvents tsmFacultad As ToolStripMenuItem
     Friend WithEvents SalirToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents tsmLibro As ToolStripMenuItem
+    Friend WithEvents tsmEdicion As ToolStripMenuItem
+    Friend WithEvents tsmEditorial As ToolStripMenuItem
+    Friend WithEvents tsmAutor As ToolStripMenuItem
 End Class

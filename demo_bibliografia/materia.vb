@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmMateria
-    Public conexion As New SqlConnection("data source=DESKTOP-B2NQHEC;initial catalog=bibliografia;uid=sa;pwd=juncris")
+    'Public conexion As New SqlConnection("data source=OZUNA;initial catalog=bibliografia;uid=sa;pwd=asdasdx2")
+    Public conexion As New SqlConnection("data source=JPANZA\SQLSERVER;initial catalog=bibliografia;Integrated Security=True")
     Dim dvMateria As New DataView
     Dim vNuevo As Boolean = True
     Private Sub LimpiarFormulario()
