@@ -26,17 +26,20 @@ Partial Class menu
         Me.tsmInicio = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmMateria = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmFacultad = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmLibro = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmEdicion = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmEditorial = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmAutor = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmPromocion = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmProcesos = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmBibliografia = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmInicio, Me.SalirToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmInicio, Me.tsmProcesos, Me.SalirToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(800, 24)
@@ -58,15 +61,10 @@ Partial Class menu
         '
         'tsmFacultad
         '
+        Me.tsmFacultad.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmPromocion})
         Me.tsmFacultad.Name = "tsmFacultad"
         Me.tsmFacultad.Size = New System.Drawing.Size(180, 22)
         Me.tsmFacultad.Text = "Facultad"
-        '
-        'SalirToolStripMenuItem
-        '
-        Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
-        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(41, 20)
-        Me.SalirToolStripMenuItem.Text = "Salir"
         '
         'tsmLibro
         '
@@ -78,13 +76,13 @@ Partial Class menu
         'tsmEdicion
         '
         Me.tsmEdicion.Name = "tsmEdicion"
-        Me.tsmEdicion.Size = New System.Drawing.Size(180, 22)
+        Me.tsmEdicion.Size = New System.Drawing.Size(117, 22)
         Me.tsmEdicion.Text = "Edicion"
         '
         'tsmEditorial
         '
         Me.tsmEditorial.Name = "tsmEditorial"
-        Me.tsmEditorial.Size = New System.Drawing.Size(180, 22)
+        Me.tsmEditorial.Size = New System.Drawing.Size(117, 22)
         Me.tsmEditorial.Text = "Editorial"
         '
         'tsmAutor
@@ -92,6 +90,31 @@ Partial Class menu
         Me.tsmAutor.Name = "tsmAutor"
         Me.tsmAutor.Size = New System.Drawing.Size(180, 22)
         Me.tsmAutor.Text = "Autor"
+        '
+        'SalirToolStripMenuItem
+        '
+        Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
+        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(41, 20)
+        Me.SalirToolStripMenuItem.Text = "Salir"
+        '
+        'tsmPromocion
+        '
+        Me.tsmPromocion.Name = "tsmPromocion"
+        Me.tsmPromocion.Size = New System.Drawing.Size(180, 22)
+        Me.tsmPromocion.Text = "Promocion"
+        '
+        'tsmProcesos
+        '
+        Me.tsmProcesos.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmBibliografia})
+        Me.tsmProcesos.Name = "tsmProcesos"
+        Me.tsmProcesos.Size = New System.Drawing.Size(66, 20)
+        Me.tsmProcesos.Text = "Procesos"
+        '
+        'tsmBibliografia
+        '
+        Me.tsmBibliografia.Name = "tsmBibliografia"
+        Me.tsmBibliografia.Size = New System.Drawing.Size(180, 22)
+        Me.tsmBibliografia.Text = "Bibiliografia"
         '
         'menu
         '
@@ -122,4 +145,7 @@ Partial Class menu
     Friend WithEvents tsmEdicion As ToolStripMenuItem
     Friend WithEvents tsmEditorial As ToolStripMenuItem
     Friend WithEvents tsmAutor As ToolStripMenuItem
+    Friend WithEvents tsmPromocion As ToolStripMenuItem
+    Friend WithEvents tsmProcesos As ToolStripMenuItem
+    Friend WithEvents tsmBibliografia As ToolStripMenuItem
 End Class

@@ -37,4 +37,14 @@
         Dim form As New editorial
         form.Show()
     End Sub
+
+    Private Sub TsmPromocion_Click(sender As Object, e As EventArgs) Handles tsmPromocion.Click
+        Dim form As New promocion
+        form.Show()
+    End Sub
+
+    Private Sub TsmBibliografia_Click(sender As Object, e As EventArgs) Handles tsmBibliografia.Click
+        Dim form As New bibliografia
+        form.Show()
+    End Sub
 End Class
