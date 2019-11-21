@@ -57,6 +57,8 @@ Public Class bibliografia
 
         gbxLibro.Enabled = True
         btnHabilitarDetalle.Enabled = False
+        btnEliminar.Enabled = True
+        btnAgregar.Enabled = True
         btnAceptar.Enabled = True
         btnCancelar.Enabled = True
         cboLibro.Focus()
@@ -106,11 +108,16 @@ where db.id=" & BibliografiaID, Transac)
 
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         If MessageBox.Show("¿Está seguro de confirmar la Bibliografia?", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
-            ConfirmarTransaccion(Transac)
-            transaccionActivo = False
-            btnAgregar.Enabled = False
-            btnEliminar.Enabled = False
-            LimpiarFormulario()
+            If dgvDetalle.Rows.Count = 0 Then
+                MessageBox.Show("Debe cargar al menos un libro")
+            Else
+                ConfirmarTransaccion(Transac)
+                transaccionActivo = False
+                btnHabilitarDetalle.Enabled = True
+                btnAgregar.Enabled = False
+                btnEliminar.Enabled = False
+                LimpiarFormulario()
+            End If
         End If
     End Sub
 
