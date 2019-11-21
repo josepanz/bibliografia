@@ -3,7 +3,9 @@ Public Class bibliografia
     Dim Transac As SqlTransaction
     Dim BibliografiaID As Integer
     Dim vLibro As Integer
+    Dim transaccionActivo As Boolean
     Private Sub bibliografia_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        transaccionActivo = False
         With cboLibro
             .DisplayMember = "titulo"
             .ValueMember = "id"
@@ -50,6 +52,7 @@ Public Class bibliografia
         End If
 
         Transac = IniciarTransaccion()
+        transaccionActivo = True
         EjecutarSQL("Insert into bibliografia values(@1,@2,@3)", Transac, cboMateria.SelectedValue, cboPromocion.SelectedValue, nudAnho.Value)
 
         gbxLibro.Enabled = True
@@ -68,15 +71,25 @@ Public Class bibliografia
                 Exit Sub
             End If
 
+            For Each row As DataGridViewRow In dgvDetalle.Rows
+                If CStr(row.Cells("Id").Value) = cboLibro.SelectedValue Then
+                    MsgBox("ESTE LIBRO YA ESTA CARGADO.")
+                    cboLibro.Focus()
+                    Exit Sub
+                    Exit For
+                End If
+            Next
+
+
+
             BibliografiaID = TraerValor("select max(id) from bibliografia", Transac)
             EjecutarSQL("insert into detalle_bibliografia values (@1,@2,@3)", Transac, BibliografiaID, cboLibro.SelectedValue, txtDescripcion.Text)
             ActualizarGrilla()
 
-
-
             cboLibro.SelectedValue = -1
         Catch ex As Exception
             MsgBox(ex.Message)
+            transaccionActivo = False
             AnularTransaccion(Transac)
         End Try
     End Sub
@@ -94,6 +107,9 @@ where db.id=" & BibliografiaID, Transac)
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         If MessageBox.Show("¿Está seguro de confirmar la Bibliografia?", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
             ConfirmarTransaccion(Transac)
+            transaccionActivo = False
+            btnAgregar.Enabled = False
+            btnEliminar.Enabled = False
             LimpiarFormulario()
         End If
     End Sub
@@ -116,6 +132,9 @@ where db.id=" & BibliografiaID, Transac)
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         If MessageBox.Show("¿Desea cancelar la Venta?", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
             AnularTransaccion(Transac)
+            transaccionActivo = False
+            btnAgregar.Enabled = False
+            btnEliminar.Enabled = False
             LimpiarFormulario()
         End If
     End Sub
@@ -126,11 +145,9 @@ where db.id=" & BibliografiaID, Transac)
 
                 EjecutarSQL("delete from detalle_bibliografia where id = @1 AND libro_id = @2", Transac, BibliografiaID, vLibro)
                 ActualizarGrilla()
-
-
-
             Catch ex As Exception
                 MessageBox.Show("Error al momento de eliminar Libro" & vbNewLine & ex.Message())
+                transaccionActivo = False
                 AnularTransaccion(Transac)
             End Try
 
@@ -141,5 +158,13 @@ where db.id=" & BibliografiaID, Transac)
         Dim row As DataGridViewRow
         row = dgvDetalle.CurrentRow
         vLibro = row.Cells("Id").Value
+    End Sub
+
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        If transaccionActivo Then
+            AnularTransaccion(Transac)
+            transaccionActivo = False
+        End If
+        Me.Close()
     End Sub
 End Class

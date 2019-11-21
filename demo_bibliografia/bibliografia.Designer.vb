@@ -42,6 +42,7 @@ Partial Class bibliografia
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.nudAnho = New System.Windows.Forms.NumericUpDown()
+        Me.btnSalir = New System.Windows.Forms.Button()
         CType(Me.nudBibliografiaID, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbxLibro.SuspendLayout()
         CType(Me.dgvDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -247,11 +248,22 @@ Partial Class bibliografia
         Me.nudAnho.Size = New System.Drawing.Size(120, 22)
         Me.nudAnho.TabIndex = 39
         '
+        'btnSalir
+        '
+        Me.btnSalir.Location = New System.Drawing.Point(1102, 17)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.TabIndex = 40
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.UseVisualStyleBackColor = True
+        '
         'bibliografia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1203, 626)
+        Me.ControlBox = False
+        Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.nudAnho)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.cboPromocion)
@@ -267,6 +279,8 @@ Partial Class bibliografia
         Me.Controls.Add(Me.gbxLibro)
         Me.Controls.Add(Me.nudBibliografiaID)
         Me.Controls.Add(Me.lblMaterialID)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "bibliografia"
         Me.Text = "bibliografia"
         CType(Me.nudBibliografiaID, System.ComponentModel.ISupportInitialize).EndInit()
@@ -298,4 +312,5 @@ Partial Class bibliografia
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents nudAnho As NumericUpDown
+    Friend WithEvents btnSalir As Button
 End Class
