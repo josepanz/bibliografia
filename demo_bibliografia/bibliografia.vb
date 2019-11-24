@@ -143,6 +143,7 @@ Public Class bibliografia
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         If MessageBox.Show("¿Desea cancelar la Venta?", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
             AnularTransaccion(Transac)
+            btnHabilitarDetalle.Enabled = True
             transaccionActivo = False
             btnAgregar.Enabled = False
             btnEliminar.Enabled = False
