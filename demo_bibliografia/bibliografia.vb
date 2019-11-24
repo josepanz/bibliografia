@@ -112,13 +112,12 @@ Public Class bibliografia
                 MessageBox.Show("Debe cargar al menos un libro")
             Else
                 If vNuevo = False Then
-                    EjecutarSQL("update bibliografia Set materia_id=@1, promocion_id=@2, ano=@3,descripcion_bibliografia=@4 where id=@5", cboMateria.SelectedValue, cboPromocion.SelectedValue, nudAnho.Value, txtDescripcion.Text, nudBibliografiaID.Value)
+                    EjecutarSQL("update bibliografia Set materia_id=@1, promocion_id=@2, ano=@3,descripcion_bibliografia=@4 where id=@5", Transac, cboMateria.SelectedValue, cboPromocion.SelectedValue, nudAnho.Value, txtDescripcion.Text, nudBibliografiaID.Value)
                 End If
 
                 If vNuevo Then
                     ConfirmarTransaccion(Transac)
                 End If
-
                 nudBibliografiaID.Value = 0
                 transaccionActivo = False
                 btnHabilitarDetalle.Enabled = True
@@ -237,6 +236,7 @@ where db.id=" & nudBibliografiaID.Value, Transac)
         If vNuevo = False Then
             If MessageBox.Show("¿Está seguro de eliminar el Registro?", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 EjecutarSQL("delete from bibliografia WHERE id = @1", nudBibliografiaID.Value)
+                EjecutarSQL("delete from detalle_bibliografia WHERE id = @1", nudBibliografiaID.Value)
                 MessageBox.Show("Registro eliminado con éxito")
                 btnAgregar.Enabled = False
                 btnEliminar.Enabled = False
