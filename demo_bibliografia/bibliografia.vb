@@ -114,7 +114,12 @@ Public Class bibliografia
                 If vNuevo = False Then
                     EjecutarSQL("update bibliografia Set materia_id=@1, promocion_id=@2, ano=@3,descripcion_bibliografia=@4 where id=@5", cboMateria.SelectedValue, cboPromocion.SelectedValue, nudAnho.Value, txtDescripcion.Text, nudBibliografiaID.Value)
                 End If
-                ConfirmarTransaccion(Transac)
+
+                If vNuevo Then
+                    ConfirmarTransaccion(Transac)
+                End If
+
+                nudBibliografiaID.Value = 0
                 transaccionActivo = False
                 btnHabilitarDetalle.Enabled = True
                 btnAgregar.Enabled = False
@@ -142,7 +147,11 @@ Public Class bibliografia
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         If MessageBox.Show("¿Desea cancelar la Venta?", Me.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
-            AnularTransaccion(Transac)
+            If vNuevo Then
+                AnularTransaccion(Transac)
+            End If
+            vNuevo = True
+            nudBibliografiaID.Value = 0
             btnHabilitarDetalle.Enabled = True
             transaccionActivo = False
             btnAgregar.Enabled = False
