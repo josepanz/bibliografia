@@ -5,6 +5,7 @@ Public Class bibliografia
     Dim vLibro As Integer
     Dim transaccionActivo As Boolean
     Dim dv As New DataView
+    Dim dvDuplicado As New DataView
     Dim vNuevo As Boolean = True
 
     Private Sub bibliografia_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -32,6 +33,7 @@ Public Class bibliografia
 
     Private Sub btnHabilitarDetalle_Click(sender As Object, e As EventArgs) Handles btnHabilitarDetalle.Click
 
+
         If cboMateria.Text = "" Then
             cboMateria.Focus()
             MsgBox("Debe seleccionar una Materia")
@@ -51,6 +53,11 @@ Public Class bibliografia
         If txtDescripcion.Text = "" Then
             txtDescripcion.Focus()
             MsgBox("Debe ingresar Descripcion")
+            Exit Sub
+        End If
+
+        If verificarBiblioDuplicado() = False Then
+            MsgBox("BIBLIOGRAFIA DUPLICADA")
             Exit Sub
         End If
 
@@ -111,6 +118,7 @@ Public Class bibliografia
             If dgvDetalle.Rows.Count = 0 Then
                 MessageBox.Show("Debe cargar al menos un libro")
             Else
+
                 If vNuevo = False Then
                     EjecutarSQL("update bibliografia Set materia_id=@1, promocion_id=@2, ano=@3,descripcion_bibliografia=@4 where id=@5", Transac, cboMateria.SelectedValue, cboPromocion.SelectedValue, nudAnho.Value, txtDescripcion.Text, nudBibliografiaID.Value)
                 End If
@@ -128,6 +136,7 @@ Public Class bibliografia
             End If
         End If
     End Sub
+
 
     Sub LimpiarFormulario()
         txtDescripcion.Clear()
@@ -173,6 +182,14 @@ Public Class bibliografia
 
         End If
     End Sub
+    Function verificarBiblioDuplicado()
+        dvDuplicado = generar_datatabla("select * from bibliografia where materia_id=" & cboMateria.SelectedValue & " and promocion_id=" & cboPromocion.SelectedValue & " and ano=" & nudAnho.Value).DefaultView
+        dgvConsulta.DataSource = dv
+        If dvDuplicado.Count > 0 Then
+            Return False
+        End If
+        Return True
+    End Function
 
     Private Sub dgvDetalle_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDetalle.CellClick
         Dim row As DataGridViewRow
