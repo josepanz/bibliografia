@@ -263,4 +263,11 @@ where db.id=" & nudBibliografiaID.Value, Transac)
             End If
         End If
     End Sub
+
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        dv.RowFilter = ""
+        If txtMateriaBuscar.Text.Trim <> "" Then
+            dv.RowFilter = "Materia like '%" & txtMateriaBuscar.Text.Trim & "%'"
+        End If
+    End Sub
 End Class

@@ -25,6 +25,9 @@ Partial Class bibliografia
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(bibliografia))
         Me.tbcPrincipal = New System.Windows.Forms.TabControl()
         Me.tbpMantenimiento = New System.Windows.Forms.TabPage()
+        Me.lblAno = New System.Windows.Forms.Label()
+        Me.lblPromocion = New System.Windows.Forms.Label()
+        Me.lblMateria = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.nudAnho = New System.Windows.Forms.NumericUpDown()
@@ -52,9 +55,6 @@ Partial Class bibliografia
         Me.txtMateriaBuscar = New System.Windows.Forms.TextBox()
         Me.lblChapa = New System.Windows.Forms.Label()
         Me.dgvConsulta = New System.Windows.Forms.DataGridView()
-        Me.lblMateria = New System.Windows.Forms.Label()
-        Me.lblPromocion = New System.Windows.Forms.Label()
-        Me.lblAno = New System.Windows.Forms.Label()
         Me.tbcPrincipal.SuspendLayout()
         Me.tbpMantenimiento.SuspendLayout()
         CType(Me.nudAnho, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -100,16 +100,43 @@ Partial Class bibliografia
         Me.tbpMantenimiento.Controls.Add(Me.lblMaterialID)
         Me.tbpMantenimiento.Location = New System.Drawing.Point(4, 22)
         Me.tbpMantenimiento.Name = "tbpMantenimiento"
-        Me.tbpMantenimiento.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tbpMantenimiento.Padding = New System.Windows.Forms.Padding(3)
         Me.tbpMantenimiento.Size = New System.Drawing.Size(894, 546)
         Me.tbpMantenimiento.TabIndex = 0
         Me.tbpMantenimiento.Text = "Mantenimiento"
         Me.tbpMantenimiento.UseVisualStyleBackColor = True
         '
+        'lblAno
+        '
+        Me.lblAno.AutoSize = True
+        Me.lblAno.Location = New System.Drawing.Point(14, 122)
+        Me.lblAno.Name = "lblAno"
+        Me.lblAno.Size = New System.Drawing.Size(30, 13)
+        Me.lblAno.TabIndex = 60
+        Me.lblAno.Text = "AÑO"
+        '
+        'lblPromocion
+        '
+        Me.lblPromocion.AutoSize = True
+        Me.lblPromocion.Location = New System.Drawing.Point(14, 92)
+        Me.lblPromocion.Name = "lblPromocion"
+        Me.lblPromocion.Size = New System.Drawing.Size(73, 13)
+        Me.lblPromocion.TabIndex = 59
+        Me.lblPromocion.Text = "PROMOCION"
+        '
+        'lblMateria
+        '
+        Me.lblMateria.AutoSize = True
+        Me.lblMateria.Location = New System.Drawing.Point(14, 55)
+        Me.lblMateria.Name = "lblMateria"
+        Me.lblMateria.Size = New System.Drawing.Size(55, 13)
+        Me.lblMateria.TabIndex = 58
+        Me.lblMateria.Text = "MATERIA"
+        '
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(801, 90)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(2)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 56)
         Me.Button1.TabIndex = 57
@@ -119,7 +146,7 @@ Partial Class bibliografia
         'btnSalir
         '
         Me.btnSalir.Location = New System.Drawing.Point(820, 14)
-        Me.btnSalir.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnSalir.Margin = New System.Windows.Forms.Padding(2)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(56, 19)
         Me.btnSalir.TabIndex = 56
@@ -129,7 +156,7 @@ Partial Class bibliografia
         'nudAnho
         '
         Me.nudAnho.Location = New System.Drawing.Point(119, 120)
-        Me.nudAnho.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.nudAnho.Margin = New System.Windows.Forms.Padding(2)
         Me.nudAnho.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
         Me.nudAnho.Name = "nudAnho"
         Me.nudAnho.Size = New System.Drawing.Size(90, 20)
@@ -229,7 +256,7 @@ Partial Class bibliografia
         'txtDescripcion
         '
         Me.txtDescripcion.Location = New System.Drawing.Point(142, 146)
-        Me.txtDescripcion.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtDescripcion.Margin = New System.Windows.Forms.Padding(2)
         Me.txtDescripcion.Name = "txtDescripcion"
         Me.txtDescripcion.Size = New System.Drawing.Size(402, 20)
         Me.txtDescripcion.TabIndex = 45
@@ -322,7 +349,7 @@ Partial Class bibliografia
         Me.tbpConsulta.Controls.Add(Me.dgvConsulta)
         Me.tbpConsulta.Location = New System.Drawing.Point(4, 22)
         Me.tbpConsulta.Name = "tbpConsulta"
-        Me.tbpConsulta.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tbpConsulta.Padding = New System.Windows.Forms.Padding(3)
         Me.tbpConsulta.Size = New System.Drawing.Size(894, 546)
         Me.tbpConsulta.TabIndex = 1
         Me.tbpConsulta.Text = "Consulta"
@@ -374,33 +401,6 @@ Partial Class bibliografia
         Me.dgvConsulta.Size = New System.Drawing.Size(888, 448)
         Me.dgvConsulta.TabIndex = 2
         '
-        'lblMateria
-        '
-        Me.lblMateria.AutoSize = True
-        Me.lblMateria.Location = New System.Drawing.Point(14, 55)
-        Me.lblMateria.Name = "lblMateria"
-        Me.lblMateria.Size = New System.Drawing.Size(55, 13)
-        Me.lblMateria.TabIndex = 58
-        Me.lblMateria.Text = "MATERIA"
-        '
-        'lblPromocion
-        '
-        Me.lblPromocion.AutoSize = True
-        Me.lblPromocion.Location = New System.Drawing.Point(14, 92)
-        Me.lblPromocion.Name = "lblPromocion"
-        Me.lblPromocion.Size = New System.Drawing.Size(73, 13)
-        Me.lblPromocion.TabIndex = 59
-        Me.lblPromocion.Text = "PROMOCION"
-        '
-        'lblAno
-        '
-        Me.lblAno.AutoSize = True
-        Me.lblAno.Location = New System.Drawing.Point(14, 122)
-        Me.lblAno.Name = "lblAno"
-        Me.lblAno.Size = New System.Drawing.Size(30, 13)
-        Me.lblAno.TabIndex = 60
-        Me.lblAno.Text = "AÑO"
-        '
         'bibliografia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -408,7 +408,7 @@ Partial Class bibliografia
         Me.ClientSize = New System.Drawing.Size(902, 572)
         Me.ControlBox = False
         Me.Controls.Add(Me.tbcPrincipal)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "bibliografia"
